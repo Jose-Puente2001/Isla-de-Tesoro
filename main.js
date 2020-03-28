@@ -2,29 +2,40 @@
 const altura = 500;
 const anchura = 800;
 
-function mapa (){
+ var mapa = {
   
-   x: numero_Aleatorio(altura)
-   y: numero_Aleatorio(anchura)
+   x: getRandomNumber(altura),
+   y: getRandomNumber(anchura)
 
-}
+};
 
 let tesoro = document.getElementById('img')
- tesoro.addEventListener("click", function (e){
+let longitud = document.getElementById ('trecho')
 
-	console.log ("click");
+ tesoro.addEventListener("click", function (e){
+   let evento = Distancia(e, mapa)
+  let distanciaHint =  Distance (evento)
+  longitud.innerHTML= ` <h1> ${distanciaHint}</h1> `
+
+  if (evento< 20){
+
+     alert ("haz encontrado el tesoro")
+     location.reload();
+  }
+    
 });
 
 
 
-
-function numero_Aleatorio(size){
+//la funcion que genera el numero aleatorio
+function getRandomNumber(size){
  
-  return Math.floor(Math.randon() * size);
+  return Math.floor(Math.random() * size);
 
 
 }
 
+//calculo de la distancia aqui se aplico teorema de pitagora
 function Distancia (e, targert){
 
    var distanciaX = e.offsetX - targert.x
@@ -34,7 +45,8 @@ function Distancia (e, targert){
 
 
 function Distance (distancia){
-
+  
+    
    if(distancia < 30){
 
      return "Estas muy cerca"
