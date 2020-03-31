@@ -76,7 +76,7 @@ function Distance (distancia){
 
    else if (distancia < 400){
 
-   	 return "esta demasiado lejo"
+   	return "esta demasiado lejo"
    }
 
 } 
